@@ -1,0 +1,32 @@
+@use "base";
+@use "component";
+
+/*Regler för hela webbplatsen*/
+html {
+    /*62,5% av 16px ger 10px*/
+    font-size: 62.5%;
+}
+
+body {
+    /*Textstorlek 16px som standard*/
+    font-size: base.$main-fontsize;
+    font-family: base.$font-stack;
+    line-height: 1.5;
+    margin: 0;
+    min-height: 100vh;
+    background: base.$primary-bg;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+h1 {
+    /*Textstorlek 32px som standard*/
+    @include component.heading-size(1);
+    @extend .h;
+}
+
+h2 {
+    /*Textstorlek 24 som standard*/
+    @include component.heading-size(2);
+    @extend .h;
+}
