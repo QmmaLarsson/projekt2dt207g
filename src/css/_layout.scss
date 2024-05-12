@@ -10,13 +10,14 @@ html {
 body {
     /*Textstorlek 16px som standard*/
     font-size: base.$main-fontsize;
-    font-family: base.$font-stack;
     line-height: 1.5;
+    font-family: base.$font-stack;
     margin: 0;
     min-height: 100vh;
-    background: base.$primary-bg;
-    max-width: 960px;
-    margin: 0 auto;
+    background-color: base.$primary-bg;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 100%;
 }
 
 h1 {
@@ -30,3 +31,276 @@ h2 {
     @include component.heading-size(2);
     @extend .h;
 }
+
+h3 {
+    /*Textstorlek 20 som standard*/
+    @include component.heading-size(3);
+    @extend .h;
+}
+
+main {
+    grid-area: 1/1/2/2;
+    padding-top: 100px;
+}
+
+header {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 15% 85%;
+    background-color: base.$darkpink;
+    box-shadow: base.$primary-shadow;
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+
+    #logo {
+        grid-area: 1/1/2/2;
+        margin-top: auto;
+        margin-bottom: auto;
+        padding-left: 5px;
+    }
+}
+
+/*Regler för huvudmeny*/
+#huvudmeny {
+    grid-area: 1/2/2/4;
+    text-align: right;
+    overflow: hidden;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    ul {
+        list-style: none;
+        margin: 0;
+    }
+
+    li {
+        display: inline;
+    }
+
+    a {
+        display: inline-block;
+        background-color: base.$primary-bg;
+        color: base.$black;
+        text-decoration: none;
+        padding: 25px;
+        margin-right: 5px;
+        border-style: outset;
+        border-color: base.$primary-bg;
+        border-width: 10px;
+    }
+
+    a:hover {
+        border-style: inset;
+    }
+
+    #closemenu {
+        /*Knappen visas inte i ursprungsläget*/
+        display: none;
+        width: 100%;
+        text-align: left;
+        background-color: base.$primary-bg;
+        color: base.$black;
+        padding: 30px;
+        border-style: none;
+        box-shadow: none;
+        cursor: pointer;
+    }
+}
+
+#openmenu {
+    /*Knappen visas inte i ursprungsläget*/
+    display: none;
+    width: 95%;
+    height: 90px;
+    margin: auto;
+    background-color: base.$primary-bg;
+    color: base.$black;
+    box-shadow: none;
+    border-style: outset;
+    border-color: base.$primary-bg;
+    border-width: 10px;
+    cursor: pointer;
+}
+
+/*Regler för skärmstorlekar med en maxbredd på 900px. Huvudmenyn blir annorlunda. Det blir en meny som ligger till höger på sidan och som täcker hela fönstrets view height. 
+Länkarna ligger i en lista istället för på rad.*/
+@media screen and (max-width: 900px) {
+    header {
+        grid-template-columns: 20% 60% 20%;
+    }
+
+    #huvudmeny {
+        /*Menyn visas inte i startläget. För att menyn ska visas måste man klicka på "Meny"-knappen. Denna funktion skapas med hjälp av 
+        JavaScript.*/
+        display: none;
+        background-color: base.$primary-bg;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 100vw;
+        text-align: left;
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            display: block;
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            padding: 30px;
+            border-style: none;
+        }
+
+        a:hover {
+            border-style: none;
+            background-color: base.$darkpink;
+        }
+
+        #closemenu {
+            /*Knappen visas*/
+            display: block;
+        }
+
+        #closemenu:hover {
+            background-color: base.$darkpink;
+        }
+    }
+
+    #openmenu {
+        /*Knappen visas*/
+        display: block;
+        grid-area: 1/3/2/4;
+    }
+
+    #openmenu:hover {
+        border-style: inset;
+    }
+
+    #menutext {
+        display: none;
+    }
+}
+
+/*Slut på regler för huvudmeny*/
+footer {
+    grid-area: 2/1/3/2;
+    align-self: end;
+    height: 60px;
+    background-color: base.$darkpink;
+    box-shadow: base.$primary-shadow;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+/*Slut på regler för hela webbplatsen*/
+
+/*Regler för startsidan*/
+.jobElement {
+    background-color: white;
+    padding: 20px;
+    border-style: double;
+    border-color: base.$darkpink;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 20px;
+}
+
+.deleteBtn {
+    @extend .button;
+}
+
+@media screen and (max-width: 900px) {
+    .jobElement {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+/*Slut på regler för startsidan*/
+
+/*Regler för sidan "Lägg till jobb"*/
+form {
+    background-color: white;
+    padding: 20px;
+    border-style: double;
+    border-color: base.$darkpink;
+    margin-top: 20px;
+    margin-left: 30%;
+    margin-right: 30%;
+
+    input {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        cursor: pointer;
+        border-style: solid;
+        border-color: base.$darkpink;
+        border-width: 2px;
+    }
+    
+    textarea {
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        border-style: solid;
+        border-color: base.$darkpink;
+        border-width: 2px;
+        box-sizing: border-box;
+        cursor: pointer
+    }
+}
+
+#submit,
+#reset {
+    @extend .button;
+}
+
+#formTextElement {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 900px) {
+    form {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    #formTextElement {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+/*Slut på regler för sidan "Lägg till jobb"*/
+
+/*Regler för sidan "Om"*/
+#textElement {
+    background-color: white;
+    padding: 20px;
+    border-style: double;
+    border-color: base.$darkpink;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 900px) {
+    #textElement {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+/*Slut på regler för sidan "Om*/
