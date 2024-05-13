@@ -6,11 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const logoutEl = document.getElementById("logout");
     const adminLinkEl = document.getElementById("adminLink");
 
+    //Om användaren är inloggad och har ett token så döljs login-knappen medan logout-knappen och admin-knappen visas
     if (token) {
         loginEl.style.display = "none";
         logoutEl.style.display = "block";
         adminLinkEl.style.display = "inline-block";
     } else {
+        //Om användaren är utloggad så visas login-knappen medan logout-knappen och admin-knappen döljs
         loginEl.style.display = "block";
         logoutEl.style.display = "none";
         adminLinkEl.style.display = "none";
