@@ -1,4 +1,21 @@
 "use strict";
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("token");
+
+    const loginEl = document.getElementById("login");
+    const logoutEl = document.getElementById("logout");
+    const adminLinkEl = document.getElementById("adminLink");
+
+    if (token) {
+        loginEl.style.display = "none";
+        logoutEl.style.display = "block";
+        adminLinkEl.style.display = "inline-block";
+    } else {
+        loginEl.style.display = "block";
+        logoutEl.style.display = "none";
+        adminLinkEl.style.display = "none";
+    }
+});
 
 //Huvudmeny
 //Variabler
@@ -15,7 +32,7 @@ function toggleMenu() {
 
     let style = window.getComputedStyle(navMenuEl);
 
-    if(style.display === "none") {
+    if (style.display === "none") {
         navMenuEl.style.display = "block";
     } else {
         navMenuEl.style.display = "none";

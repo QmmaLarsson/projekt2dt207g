@@ -80,6 +80,10 @@ header {
         display: inline;
     }
 
+    #adminLink {
+        display: none;
+    }
+
     a {
         display: inline-block;
         background-color: base.$primary-bg;
@@ -200,6 +204,10 @@ footer {
     margin-top: 0;
     padding-top: 10px;
     padding-bottom: 30px;
+
+    #logout {
+        display: none;
+    }
 }
 
 /*Slut på regler för hela webbplatsen*/

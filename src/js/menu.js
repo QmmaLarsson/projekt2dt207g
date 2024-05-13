@@ -1,4 +1,8 @@
 "use strict";
+//Funktion som gör att funktionerna nedan körs direkt när sidan laddas in
+window.onload = function () {
+    getMenu();
+};
 
 //Funktion för att hämta meny från APIet
 async function getMenu() {
@@ -13,8 +17,6 @@ async function getMenu() {
 
 //Funktion för att skriva ut alla items
 function displayMenu(items) {
-    const itemContainerEl = document.querySelector(".itemContainer");
-
     //Loopa igenom varje item och skapa ett HTML-element
     items.forEach(item => {
         const itemElement = document.createElement("div");
@@ -45,6 +47,13 @@ function displayMenu(items) {
         const deleteBtn = itemElement.querySelector(".deleteBtn");
         const editBtn = itemElement.querySelector(".editBtn");
 
+        //Dölj delete-knappen och redigera-knappen om användaren inte är inloggad och hr ett token
+        const token = localStorage.getItem("token");
+        if (!token) {
+            deleteBtn.style.display = "none";
+            editBtn.style.display = "none";
+        }
+
         //Händelsehanterare för radera-knappen
         deleteBtn.addEventListener("click", () => {
             const token = localStorage.getItem("token");
@@ -66,6 +75,7 @@ function displayMenu(items) {
 
             //Man måste vara inloggad och ha ett token för att kunna uppdatera ett item
             if (token) {
+                //Variabler för värdena i itemElement
                 const nameEl = itemElement.querySelector(".name");
                 const descriptionEl = itemElement.querySelector(".description");
                 const priceEl = itemElement.querySelector(".price");
@@ -171,8 +181,3 @@ async function updateItem(itemId, newItem) {
         console.error("Ett fel uppstod vid hämtning av data:", error);
     }
 }
-
-//Funktion som gör att funktionerna ovanför kör direkt när sidan laddas in
-window.onload = function () {
-    getMenu();
-};
