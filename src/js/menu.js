@@ -24,7 +24,6 @@ function displayMenu(items) {
 
         itemElement.innerHTML = `
         <p><strong>Namn:</strong> <span class="name">${item.name}</span></p>
-        <p><strong>Typ:</strong> <span class="type">${item.type}</span></p>
         <p><strong>Beskrivning:</strong> <span class="description">${item.description}</span></p>
         <p><strong>Pris:</strong> <span class="price">${item.price}</span></p>
         <button class="deleteBtn" type="button">Ta bort</button>
@@ -34,7 +33,13 @@ function displayMenu(items) {
         // Lägg till varje items ID som ett data-attribut
         itemElement.dataset.itemId = item._id;
 
-        itemContainerEl.appendChild(itemElement);
+        // Hitta rätt div baserat på objektets typ och lägg till item-elementet där
+        const container = document.querySelector(`.${item.type}`);
+        if (container) {
+            container.appendChild(itemElement);
+        } else {
+            console.error(`Div för typ ${item.type} finns inte.`);
+        }
 
         //Variabler för knappar
         const deleteBtn = itemElement.querySelector(".deleteBtn");
@@ -62,13 +67,11 @@ function displayMenu(items) {
             //Man måste vara inloggad och ha ett token för att kunna uppdatera ett item
             if (token) {
                 const nameEl = itemElement.querySelector(".name");
-                const typeEl = itemElement.querySelector(".type");
                 const descriptionEl = itemElement.querySelector(".description");
                 const priceEl = itemElement.querySelector(".price");
 
                 //Skapa inputfält för att möjliggöra redigering
                 nameEl.innerHTML = `<input type="text" class="editName" value="${item.name}">`;
-                typeEl.innerHTML = `<input type="text" class="editType" value="${item.type}">`;
                 descriptionEl.innerHTML = `<input type="text" class="editDescription" value="${item.description}">`;
                 priceEl.innerHTML = `<input type="text" class="editPrice" value="${item.price}">`;
 
@@ -82,7 +85,6 @@ function displayMenu(items) {
                 saveBtn.addEventListener("click", () => {
                     const newItem = {
                         name: itemElement.querySelector(".editName").value,
-                        type: itemElement.querySelector(".editType").value,
                         description: itemElement.querySelector(".editDescription").value,
                         price: itemElement.querySelector(".editPrice").value
                     };
@@ -91,7 +93,6 @@ function displayMenu(items) {
                         .then(() => {
                             //Uppdatera sidan med de nya värdena
                             nameEl.textContent = newItem.name;
-                            typeEl.textContent = newItem.type;
                             descriptionEl.textContent = newItem.description;
                             priceEl.textContent = newItem.price;
 
@@ -103,7 +104,6 @@ function displayMenu(items) {
 
                             //Återställ sidan med de gamla värdena om uppdateringen misslyckas
                             nameEl.textContent = item.name;
-                            typeEl.textContent = item.type;
                             descriptionEl.textContent = item.description;
                             priceEl.textContent = item.price;
 

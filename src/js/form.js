@@ -46,17 +46,23 @@ async function addItem(name, type, description, price) {
         price: price
     }
 
-    const response = await fetch(postUrl, {
-        method: "POST",
-        headers: {
-            //Man måste vara inloggad och ha ett token för att kunna ta bort ett item
-            "Authorization": "Bearer " + token,
-            "content-type": "Application/json"
-        },
-        body: JSON.stringify(items)
-    });
+    try {
+        const response = await fetch(postUrl, {
+            method: "POST",
+            headers: {
+                //Man måste vara inloggad och ha ett token för att kunna ta bort ett item
+                "Authorization": "Bearer " + token,
+                "content-type": "Application/json"
+            },
+            body: JSON.stringify(items)
+        });
 
-    const data = await response.json();
-    console.log(data);
-
+        if (response.ok) {
+            console.log("Ett item har lagts till databasen.");
+        } else {
+            console.error("Det gick inte att lägga till ett item i databasen.");
+        }
+    } catch (error) {
+        console.error("Ett fel uppstod vid hämtning av data:", error);
+    }
 }
