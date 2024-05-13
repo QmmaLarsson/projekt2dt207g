@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/main.scss">
     <script src="js/main.js" type="module"></script>
     <script src="js/protect.js" type="module"></script>
+    <script src="js/form.js" type="module"></script>
     <script src="https://kit.fontawesome.com/d768b3824b.js" crossorigin="anonymous"></script>
 </head>
 
@@ -45,6 +46,35 @@
 
     <main>
         <h1>Välkommen till adminsidan!</h1>
+        <p>På denna sida kan du lägga till nya items på menyn.</p>
+
+        <form id="menuForm">
+
+            <label for="name"><strong>Namn:</strong></label>
+            <br>
+            <input type="text" id="name" name="name" required>
+            <br><br>
+            <label for="type"><strong>Kategori:</strong></label>
+            <br>
+            <select id="type" name="type" required>
+                <option value="" selected disabled>Välj kategori</option>
+                <option value="maincourse">Huvudrätt</option>
+                <option value="dessert">Efterrätt</option>
+                <option value="drink">Dryck</option>
+            </select>
+            <br><br>
+            <label for="description"><strong>Beskrivning:</strong></label>
+            <br>
+            <input type="text" id="description" name="description" required>
+            <br><br>
+            <label for="price"><strong>Pris:</strong></label>
+            <br>
+            <input type="number" id="price" name="price" step="0.01" required>
+            <br><br>
+            <button id="submit" type="submit">Spara item</button>
+            <button id="reset" type="reset">Rensa formulär</button>
+        </form>
+
     </main>
 
     <footer>

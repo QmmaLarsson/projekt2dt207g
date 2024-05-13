@@ -8,8 +8,6 @@ async function getMenu() {
 
     const data = await response.json();
 
-    console.log(data);
-
     displayMenu(data);
 }
 
