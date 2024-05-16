@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (token) {
         loginEl.style.display = "none";
         logoutEl.style.display = "block";
-        adminLinkEl.style.display = "inline-block";
+        adminLinkEl.style.display = "block";
     } else {
         //Om användaren är utloggad så visas login-knappen medan logout-knappen och admin-knappen döljs
         loginEl.style.display = "block";

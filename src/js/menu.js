@@ -1,5 +1,5 @@
 "use strict";
-//Funktion som gör att funktionerna nedan körs direkt när sidan laddas in
+//Funktion som gör att funktionen nedan körs direkt när sidan laddas in
 window.onload = function () {
     getMenu();
 };
@@ -36,7 +36,7 @@ function displayMenu(items) {
         itemElement.dataset.itemId = item._id;
 
         // Hitta rätt div baserat på objektets typ och lägg till item-elementet där
-        const container = document.querySelector(`.${item.type}`);
+        const container = document.getElementById(item.type);
         if (container) {
             container.appendChild(itemElement);
         } else {
@@ -180,4 +180,37 @@ async function updateItem(itemId, newItem) {
     } catch (error) {
         console.error("Ett fel uppstod vid hämtning av data:", error);
     }
+}
+
+//Variabler för knappar för att bläddra mellan olika matkategorier
+const savouryBtnEl = document.getElementById("savouryBtn");
+const sweetBtnEl = document.getElementById("sweetBtn");
+const drinkBtnEl = document.getElementById("drinkBtn");
+
+//Händelselyssnare för knappar för att bläddra mellan olika matkategorier
+savouryBtnEl.addEventListener("click", () => openMenu(event, "savoury"));
+sweetBtnEl.addEventListener("click", () => openMenu(event, "sweet"));
+drinkBtnEl.addEventListener("click", () => openMenu(event, "drink"));
+
+//Funktion för knappar för att bläddra mellan olika matkategorier
+function openMenu(event, foodCategory) {
+    let i, tabContent, tabs;
+
+    //Dölj allt innehåll i flikarna
+    tabContent = document.getElementsByClassName("tabContent");
+    for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+    }
+
+    //Ta bort "active" från alla flikar
+    tabs = document.getElementsByClassName("tabs");
+    for (i = 0; i < tabs.length; i++) {
+        tabs[i].className = tabs[i].className.replace(" active", "");
+    }
+
+    //Visa innehåll för vald flik
+    document.getElementById(foodCategory).style.display = "block"
+
+    //Markerar den valda knappen som "active"
+    event.currentTarget.classList.add("active");
 }

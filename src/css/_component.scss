@@ -27,8 +27,6 @@
 .button {
     font-size: base.$main-fontsize;
     font-family: base.$font-stack;
-    border-style: outset;
-    border-width: 10px;
     border-color: base.$darkpink;
     background-color: base.$darkpink;
     color: white;
@@ -38,5 +36,15 @@
 }
 
 .button:hover {
-    border-style: inset;
+    background-image: url("/src/images/btn.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left center;
+}
+
+.button.active {
+    background-image: url("/src/images/btn.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left center;
 }
