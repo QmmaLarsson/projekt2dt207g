@@ -1,4 +1,5 @@
 "use strict";
+//En händelselyssnare med en funktion som körs när DOM-innehållet på sidan har laddats in
 document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("token");
 
@@ -41,6 +42,37 @@ function toggleMenu() {
     }
 }
 
+//Huvudmeny liten skärm
+//Variabler
+const linksMobile = document.querySelectorAll("#huvudmeny a");
+
+//For each-loop som lägger till en klickhändelse för varje länk
+linksMobile.forEach(link => {
+    link.addEventListener("click", () => {
+        //En if-sats som körs om skärmstorleken är 900px eller mindre
+        if (window.innerWidth <= 900) {
+            //När en länk klickas på döljs menyn
+            document.getElementById("huvudmeny").style.display = "none";
+        }
+    })
+})
+
+//Länkar i huvudmeny
+//Variabler
+const menuLinks = document.querySelectorAll("nav ul li a");
+
+//For each-loop som lägger till en klickhändelse för varje länk
+menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        //Tar bort klassen "active" från andra länkar i huvudmenyn
+        menuLinks.forEach(otherLink => {
+            otherLink.classList.remove("active");
+        });
+        //Lägger till klassen "active" till en klickade länken i huvudmenyn
+        link.classList.add("active");
+    });
+});
+
 //Logga ut
 //Variabler
 const logoutEl = document.getElementById("logout");
@@ -56,3 +88,22 @@ function handleLogout() {
     //Omdirigera till inloggningssidan
     window.location.href = "login.html";
 }
+
+//Bakgrund på header vid scroll
+
+//Header
+//Variabler
+const headerEl = document.getElementById("header");
+
+//Händelsehanterare
+document.addEventListener("scroll", function () {
+    const scrollPosition = window.scrollY;
+
+    if (scrollPosition > 0) {
+        //Om man scrollar ner så att headern inte ligger på toppen av sidan så får headern en bakgrundsfärg
+        headerEl.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+    } else {
+        //Om headern ligger på toppen av sidan så har en den ingen bakgrundsfärg
+        headerEl.style.backgroundColor = "transparent";
+    }
+});

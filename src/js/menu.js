@@ -1,5 +1,5 @@
 "use strict";
-//Funktion som gör att funktionen nedan körs direkt när sidan laddas in
+//Funktion som körs direkt när sidan laddas in
 window.onload = function () {
     getMenu();
 };
@@ -25,9 +25,9 @@ function displayMenu(items) {
         itemElement.classList.add("itemElement");
 
         itemElement.innerHTML = `
-        <p><strong>Namn:</strong> <span class="name">${item.name}</span></p>
-        <p><strong>Beskrivning:</strong> <span class="description">${item.description}</span></p>
-        <p><strong>Pris:</strong> <span class="price">${item.price}</span></p>
+        <p><span class="name"><strong>${item.name}</strong> </span></p>
+        <p><span class="description"><em>${item.description}</em></span></p>
+        <p><span class="price"><strong>${item.price}</strong></span><strong>kr</strong></p>
         <button class="deleteBtn" type="button">Ta bort</button>
         <button class="editBtn" type="button">Redigera</button>
 `;
@@ -43,11 +43,12 @@ function displayMenu(items) {
             console.error(`Div för typ ${item.type} finns inte.`);
         }
 
-        //Variabler för knappar
+        //Knappar (delete och redigera)
+        //Variabler
         const deleteBtn = itemElement.querySelector(".deleteBtn");
         const editBtn = itemElement.querySelector(".editBtn");
 
-        //Dölj delete-knappen och redigera-knappen om användaren inte är inloggad och hr ett token
+        //Dölj delete-knappen och redigera-knappen om användaren inte är inloggad och har ett token
         const token = localStorage.getItem("token");
         if (!token) {
             deleteBtn.style.display = "none";
@@ -85,13 +86,14 @@ function displayMenu(items) {
                 descriptionEl.innerHTML = `<input type="text" class="editDescription" value="${item.description}">`;
                 priceEl.innerHTML = `<input type="text" class="editPrice" value="${item.price}">`;
 
-                //Knapp för att spara uppdateringar skapas
+                //Spara-knapp
+                //Variabler
                 const saveBtn = document.createElement("button");
                 saveBtn.textContent = "Spara";
                 saveBtn.classList.add("saveBtn");
                 saveBtn.type = "button";
 
-                //Händelselyssnare för spara-knappen
+                //Händelselyssnare med funktion som körs vid klick på knapp
                 saveBtn.addEventListener("click", () => {
                     const newItem = {
                         name: itemElement.querySelector(".editName").value,
@@ -182,17 +184,18 @@ async function updateItem(itemId, newItem) {
     }
 }
 
-//Variabler för knappar för att bläddra mellan olika matkategorier
+//Knappar för att bläddra mellan olika matkategorier
+//Variabler
 const savouryBtnEl = document.getElementById("savouryBtn");
 const sweetBtnEl = document.getElementById("sweetBtn");
 const drinkBtnEl = document.getElementById("drinkBtn");
 
-//Händelselyssnare för knappar för att bläddra mellan olika matkategorier
+//Händelselyssnare
 savouryBtnEl.addEventListener("click", () => openMenu(event, "savoury"));
 sweetBtnEl.addEventListener("click", () => openMenu(event, "sweet"));
 drinkBtnEl.addEventListener("click", () => openMenu(event, "drink"));
 
-//Funktion för knappar för att bläddra mellan olika matkategorier
+//Funktion
 function openMenu(event, foodCategory) {
     let i, tabContent, tabs;
 

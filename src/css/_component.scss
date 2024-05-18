@@ -25,26 +25,20 @@
 
 //Knappar
 .button {
-    font-size: base.$main-fontsize;
+    font-size: 2rem;
     font-family: base.$font-stack;
-    border-color: base.$darkpink;
+    border: none;
     background-color: base.$darkpink;
-    color: white;
-    padding: 10px;
-    margin-bottom: 10px;
+    color: base.$black;
+    padding: 25px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 .button:hover {
-    background-image: url("/src/images/btn.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left center;
+    background-color: base.$primary-bg;
 }
 
 .button.active {
-    background-image: url("/src/images/btn.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left center;
+    background-color: base.$primary-bg;
 }

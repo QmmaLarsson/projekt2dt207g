@@ -1,12 +1,12 @@
 "use strict";
 
-//Variabel för formulär
+//Variabler
 const formEl = document.getElementById("menuForm");
 
-//Händelsehanterare for formulär
+//Händelsehanterare
 formEl.addEventListener("submit", handleSubmit);
 
-//Funktion för att hantera formulär
+//Funktion
 async function handleSubmit(event) {
     //Förhindra standardsubmit
     event.preventDefault();
