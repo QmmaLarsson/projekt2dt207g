@@ -189,12 +189,19 @@ Länkarna ligger i en lista istället för på rad.*/
             width: 100%;
             padding: 30px;
             border-style: none;
-            border-radius: 0;
+            border-radius: 0px;
         }
 
         a:hover {
             border-style: none;
             background-color: base.$white;
+            border-radius: 0;
+        }
+
+        a.active {
+            border-style: none;
+            background-color: base.$white;
+            border-radius: 0;
         }
 
         #closemenu {
