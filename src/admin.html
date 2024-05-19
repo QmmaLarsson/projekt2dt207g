@@ -12,9 +12,9 @@
     <script src="https://kit.fontawesome.com/d768b3824b.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
-    <header id="header">
-
+<body id="down">
+    
+<header id="header" class="headerBg">
         <a id="logo" href="index.html"><img id="imgLogo" src="images/logo.svg" alt="Logotyp"></a>
 
         <!-- En knapp för att öppna meny på mindre skärmar -->
@@ -35,9 +35,6 @@
 
             <ul>
                 <li><a href="index.html">STARTSIDA</a></li>
-                <li><a href="../src/index.html#menu-heading">MENY</a></li>
-                <li><a href="../src/index.html#about-heading">OM OSS</a></li>
-                <li><a href="../src/index.html#contact-heading">KONTAKT</a></li>
                 <li id="adminLink"><a class="active" href="admin.html">ADMIN</a></li>
             </ul>
 
@@ -45,9 +42,10 @@
 
     </header>
 
-    <main id="down">
-        <h1>Välkommen till adminsidan!</h1>
-        <p>På denna sida kan du lägga till nya items på menyn.</p>
+    <main>
+        <h1 id="adminHeading">Välkommen till adminsidan!</h1>
+        <p id="adminText">På denna sida kan du lägga till nya items på menyn. För att ta bort eller redigera ett redan befintligt item,
+            gå till menyn på startsidan.</p>
 
         <form id="menuForm">
 
@@ -73,15 +71,16 @@
             <br>
             <input type="number" id="price" name="price" step="0.01" required>
             <br><br>
-            <button id="submit" type="submit">Spara item</button>
-            <button id="reset" type="reset">Rensa formulär</button>
+            <button id="submit" type="submit">SPARA ITEM</button>
+            <button id="reset" type="reset">RENSA FORMULÄR</button>
         </form>
 
     </main>
 
-    <footer>
-        <p id="login"><a href="login.html">Logga in</a></p>
-        <button class="submit" id="logout" type="button">Logga ut</button>
+    <footer id="adminFooter">
+        <h3>ADMIN</h3>
+        <p id="login"><a class="link" href="login.html">Logga in</a></p>
+        <p id="logout" class="link">Logga ut</p>
     </footer>
 </body>
 

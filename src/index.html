@@ -7,7 +7,13 @@
     <title>Startsida</title>
     <link rel="stylesheet" href="css/main.scss">
     <script src="js/main.js" type="module"></script>
+    <script src="js/scroll.js" type="module"></script>
     <script src="js/menu.js" type="module"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="js/map.js" type="module"></script>
     <script src="https://kit.fontawesome.com/d768b3824b.js" crossorigin="anonymous"></script>
 </head>
 
@@ -33,10 +39,10 @@
             </button>
 
             <ul>
-                <li><a class="active" href="#top">STARTSIDA</a></li>
-                <li><a href="#menu-heading">MENY</a></li>
-                <li><a href="#about-heading">OM OSS</a></li>
-                <li><a href="#contact-heading">KONTAKT</a></li>
+                <li><a class="active" id="topLink" href="#">STARTSIDA</a></li>
+                <li><a href="#menuHeading" id="menuLink">MENY</a></li>
+                <li><a href="#aboutHeading" id="aboutLink">OM OSS</a></li>
+                <li><a href="#contactHeading" id="contactLink">HITTA HIT</a></li>
                 <li id="adminLink"><a href="admin.html">ADMIN</a></li>
             </ul>
 
@@ -45,37 +51,83 @@
     </header>
 
     <main>
-        <img id="headerimg" src="images/header.jpg" alt="Hjärtformad våffla">
-        <h1>Välkommen till våran restarang!</h1>
-
-        <h2 id="menu-heading">MENY</h2>
-
-        <div id="menuContainer">
-        <div class="tabBtn">
-            <button id="savouryBtn" class="tabs">MATIGA VÅFFLOR</button>
-            <button id="sweetBtn" class="tabs">SÖTA VÅFFLOR</button>
-            <button id="drinkBtn" class="tabs">DRYCK</button>
+        <div id="heroContainer">
+            <picture id="heroImg">
+                <source media="(min-width: 500px)" srcset="images/header2.jpg">
+                <img src="images/header.jpg" alt="Hjärtformad våffla" style="width: 100%">
+            </picture>
+            <h1 id="heroText">Välkommen till Våffelfabriken!</h1>
         </div>
-        <div class="itemContainer">
-            <div id="savoury" class="tabContent active"></div>
-            <div id="sweet" class="tabContent"></div>
-            <div id="drink" class="tabContent">
-                <div id="hotdrink">
+
+        <div id="gridContainer">
+            <h2 id="menuHeading">MENY</h2>
+
+            <div id="menuContainer">
+                <div class="tabBtn">
+                    <button id="savouryBtn" class="tabs">MATIGA VÅFFLOR</button>
+                    <button id="sweetBtn" class="tabs">SÖTA VÅFFLOR</button>
+                    <button id="drinkBtn" class="tabs">DRYCK</button>
                 </div>
-                <div id="colddrink">
+                <div class="itemContainer">
+                    <div id="savoury" class="tabContent active"></div>
+                    <div id="sweet" class="tabContent"></div>
+                    <div id="drink" class="tabContent">
+                        <div id="colddrink">
+                            <h3 class="drinkText">Kalla drycker</h3>
+                        </div>
+                        <div id="hotdrink">
+                            <h3 class="drinkText">Varma drycker</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <h2 id="aboutHeading">OM OSS</h2>
+            <img id="aboutImg" src="images/about.jpg" alt="Restaurang">
+            <p id="aboutText">
+                Välkommen till Våffelfabriken, en plats av lycka i hjärtat av Skultuna. Vår resa började med
+                vår passionerade grundare, Emma. Med kärlek till våfflor och en vilja att dela matglädje skapade Emma
+                denna
+                unika våffelrestaurang.
+                <br><br>
+                Hos oss är våfflan ett konstverk av smaker och kreativitet, från klassiska favoriter till innovativa
+                tolkningar. Men Våffelfabriken handlar inte bara om våfflor, det handlar om gemenskapen. Varje gäst blir
+                en
+                del av vår
+                familj, och vi strävar efter att skapa en varm och välkomnande atmosfär där varje besök blir en
+                minnesvärd
+                upplevelse.
+                <br><br>
+                Välkommen till Våffelfabriken - plats där varje våffla är en kram från hjärtat!
+            </p>
+
+            <h2 id="contactHeading">HITTA HIT</h2>
+            <p id="mapText">Vi är belägna på Bruksgatan 10 i Skultuna.</p>
+            <div id="mapContainer">
+                <div id="map"></div>
+                <div id="error2"></div>
+            </div>
         </div>
-    </div>
-
-    <h2 id="about-heading">Om oss</h2>
-
-    <h2 id="contact-heading">Kontakt</h2>
     </main>
 
     <footer>
-        <p id="login"><a href="login.html">Logga in</a></p>
-        <button class="submit" id="logout" type="button">Logga ut</button>
+        <div id="contactContainer">
+            <h3>KONTAKTA OSS</h3>
+            <p>073-019 19 00 <br>
+                <a class="link" href="mailto:emla2309@student.miun.se">kontakt@vaffelfabriken.se</a>
+            </p>
+        </div>
+        <div id="timeContainer">
+            <h3>ÖPPETTIDER</h3>
+            <p> Måndag: Stängt <br>
+                Tisdag-Torsdag: 11.00-16.30 <br>
+                Fredag-Söndag: 11.00-19.30</p>
+        </div>
+        <div id="adminContainer">
+            <h3>ADMIN</h3>
+            <p id="login"><a class="link" href="login.html">Logga in</a></p>
+            <p id="logout" class="link">Logga ut</p>
+        </div>
     </footer>
 </body>
 

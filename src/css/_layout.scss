@@ -39,11 +39,21 @@ h3 {
     @extend .h;
 }
 
+.link {
+    color: base.$white;
+}
+
+#logout {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 main {
     grid-area: 1/1/2/2;
 }
 
 #down {
+    min-height: calc(100vh - 100px);
     margin-top: 100px;
 }
 
@@ -55,7 +65,7 @@ header {
     width: 100%;
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 2;
 
     #logo img {
         max-width: 200px;
@@ -68,6 +78,11 @@ header {
         margin-bottom: auto;
         padding-left: 5px;
     }
+}
+
+.headerBg {
+    background-color: base.$darkbeige;
+    box-shadow: base.$primary-shadow;
 }
 
 /*Regler för huvudmeny*/
@@ -102,12 +117,12 @@ header {
     }
 
     a:hover {
-        background-color: white;
+        background-color: base.$white;
         border-radius: 5px;
     }
 
     a.active {
-        background-color: white;
+        background-color: base.$white;
         border-radius: 5px;
     }
 
@@ -116,11 +131,13 @@ header {
         display: none;
         width: 100%;
         text-align: left;
-        background-color: base.$primary-bg;
+        background-color: base.$darkbeige;
         color: base.$black;
         padding: 30px;
         border-style: none;
         box-shadow: none;
+        border-radius: 0;
+        margin: 0;
         cursor: pointer;
     }
 }
@@ -131,7 +148,7 @@ header {
     width: 95%;
     height: 90px;
     margin: auto;
-    background-color: base.$primary-bg;
+    background-color: base.$darkbeige;
     color: base.$black;
     box-shadow: none;
     border: none;
@@ -149,7 +166,7 @@ Länkarna ligger i en lista istället för på rad.*/
         /*Menyn visas inte i startläget. För att menyn ska visas måste man klicka på "Meny"-knappen. Denna funktion skapas med hjälp av 
         JavaScript.*/
         display: none;
-        background-color: base.$primary-bg;
+        background-color: base.$darkbeige;
         position: absolute;
         right: 0;
         top: 0;
@@ -176,7 +193,7 @@ Länkarna ligger i en lista istället för på rad.*/
 
         a:hover {
             border-style: none;
-            background-color: base.$darkpink;
+            background-color: base.$white;
         }
 
         #closemenu {
@@ -185,7 +202,7 @@ Länkarna ligger i en lista istället för på rad.*/
         }
 
         #closemenu:hover {
-            background-color: base.$darkpink;
+            background-color: base.$white;
         }
     }
 
@@ -196,7 +213,7 @@ Länkarna ligger i en lista istället för på rad.*/
     }
 
     #openmenu:hover {
-        border-style: inset;
+        background-color: base.$white;
     }
 
     #menutext {
@@ -208,31 +225,162 @@ Länkarna ligger i en lista istället för på rad.*/
 footer {
     grid-area: 2/1/3/2;
     align-self: end;
-    height: 60px;
-    background-color: base.$darkpink;
-    box-shadow: base.$primary-shadow;
+    background-color: base.$darkbeige;
     text-align: center;
-    margin-top: 0;
-    padding-top: 10px;
-    padding-bottom: 30px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+    grid-template-rows: auto;
+    box-shadow: base.$primary-shadow;
 
     #logout {
         display: none;
+    }
+
+    #contactContainer {
+        grid-area: 1/1/2/2;
+        margin: 0 auto;
+    }
+
+    #timeContainer {
+        grid-area: 1/2/2/3;
+        margin: 0 auto;
+    }
+
+    #adminContainer {
+        grid-area: 1/3/2/4;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    footer {
+        grid-template-columns: 100%;
+
+        #contactContainer {
+            grid-area: 1/1/2/2;
+        }
+
+        #timeContainer {
+            grid-area: 2/1/3/2;
+        }
+
+        #adminContainer {
+            grid-area: 3/1/4/2;
+        }
     }
 }
 
 /*Slut på regler för hela webbplatsen*/
 
 /*Regler för startsidan*/
-#headerimg {
+
+#heroContainer {
+    position: relative;
+}
+
+#heroImg {
     max-width: 100vw;
+}
+
+#heroText {
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 100vw;
+    padding: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#gridContainer {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    margin: 0 auto;
+    width: 80%;
+
+    #menuHeading {
+        grid-area: 1/1/2/3;
+    }
+
+    #menuContainer {
+        grid-area: 2/1/3/3;
+    }
+
+    #aboutHeading {
+        grid-area: 3/1/4/3;
+    }
+
+    #aboutImg {
+        grid-area: 4/1/5/2;
+        max-width: 400px;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border-style: solid;
+        border-width: 2px;
+        border-color: base.$darkbeige;
+    }
+
+    #aboutText {
+        grid-area: 4/2/5/3;
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-block-start: 0;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    #contactHeading {
+        grid-area: 5/1/6/3;
+    }
+
+    #mapText {
+        grid-area: 6/1/7/3;
+        text-align: center;
+    }
+
+    #mapContainer {
+        grid-area: 7/1/8/3;
+    }
+
+    @media screen and (max-width: 900px) {
+
+        #aboutImg {
+            grid-area: 5/1/6/3;
+            margin-right: 0;
+        }
+
+        #aboutText {
+            grid-area: 4/1/5/3;
+            padding-left: 0;
+        }
+
+        #contactHeading {
+            grid-area: 6/1/7/3;
+        }
+
+        #mapText {
+            grid-area: 7/1/8/3;
+            text-align: center;
+        }
+
+        #mapContainer {
+            grid-area: 8/1/9/3;
+        }
+    }
 }
 
 /*Slut på regler för startsidan*/
 
-/*Regler för sidan "MENY"*/
+/*Regler för "MENY"*/
 #menuContainer {
-    background-color: white;
+    background-color: base.$darkbeige;
+    width: 100%;
     max-width: 960px;
     margin: 0 auto;
     border-radius: 5px;
@@ -246,7 +394,24 @@ footer {
 }
 
 .tabBtn button {
-    @extend .button;
+    font-size: 2rem;
+    font-family: base.$font-stack;
+    background-color: base.$darkbeige;
+    color: base.$black;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.tabBtn button:hover {
+    background-color: base.$white;
+}
+
+.tabBtn button.active {
+    background-color: base.$white;
 }
 
 #itemContainer {
@@ -290,45 +455,102 @@ div.itemElement {
     margin: 10px;
     width: 50%;
 }
-/*Slut på regler för sidan "MENY"*/
 
-/*Regler för sidan "OM OSS"*/
+@media screen and (max-width: 900px) {
+    div.itemElement {
+        width: 90%;
+        margin: 10 auto;
+    }
+}
 
-/*Slut på regler för sidan "OM OSS"*/
+.drinkText {
+    text-align: left;
+    padding-left: 10px;
+}
 
-/*Regler för sidan "KONTAKT"*/
+.deleteBtn,
+.editBtn,
+.saveBtn {
+    @extend .button;
+    font-size: base.$main-fontsize;
+}
 
-/*Slut på regler för sidan "KONTAKT"*/
+span.name {
+    font-weight: bold;
+}
+
+span.description {
+    font-style: italic;
+}
+
+span.price {
+    font-weight: bold;
+}
+
+/*Slut på regler för "MENY"*/
+
+/*Regler för "OM OSS"*/
+#aboutText {
+    max-width: 450px;
+}
+
+/*Slut på regler för "OM OSS"*/
+
+/*Regler för "HITTA HIT"*/
+#map {
+    margin: auto;
+    height: 400px;
+    width: 600px;
+    max-width: 100%;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: base.$darkbeige;
+    z-index: 1;
+}
+
+/*Slut på regler för "HITTA HIT"*/
 
 /*Regler för sidan "ADMIN"*/
+#adminFooter {
+    grid-area: 2/1/3/2;
+    align-self: end;
+    display: block;
+}
+
 form {
+    font-family: base.$font-stack;
+    font-size: base.$main-fontsize;
     background-color: white;
     padding: 20px;
-    border-style: double;
-    border-color: base.$darkpink;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: base.$darkbeige;
+    width: 80%;
+    margin: auto;
     margin-top: 20px;
-    margin-left: 30%;
-    margin-right: 30%;
 
     input {
         width: 100%;
         padding: 10px;
+        border-radius: 5px;
         box-sizing: border-box;
         cursor: pointer;
         border-style: solid;
-        border-color: base.$darkpink;
+        border-color: base.$darkbeige;
         border-width: 2px;
     }
 
-    textarea {
-        width: 100%;
-        height: 100px;
+    select {
+        width: 50%;
         padding: 10px;
-        border-style: solid;
-        border-color: base.$darkpink;
-        border-width: 2px;
+        border-radius: 5px;
         box-sizing: border-box;
-        cursor: pointer
+        cursor: pointer;
+        border-style: solid;
+        border-color: base.$darkbeige;
+        border-width: 2px;
     }
 }
 
@@ -337,42 +559,44 @@ form {
     @extend .button;
 }
 
-#formTextElement {
-    margin-left: 30%;
-    margin-right: 30%;
-    margin-bottom: 20px;
+#adminHeading {
+    width: 80%;
+    margin: auto;
 }
 
-@media screen and (max-width: 900px) {
-    form {
-        margin-left: 10%;
-        margin-right: 10%;
-    }
+#adminText {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 450px;
+    width: 80%;
+    margin: auto;
+}
 
-    #formTextElement {
-        margin-left: 10%;
-        margin-right: 10%;
-    }
+#logoutAdmin {
+    margin: 0 auto;
+    background-color: base.$darkbeige;
+    width: 100vw;
+    text-align: center
 }
 
 /*Slut på regler för sidan "ADMIN"*/
 
-/*Regler för sidan "Om"*/
-#textElement {
-    background-color: white;
-    padding: 20px;
-    border-style: double;
-    border-color: base.$darkpink;
-    margin-left: 30%;
-    margin-right: 30%;
-    margin-bottom: 20px;
+/*Regler för sidan "LOGGA IN"*/
+#logoDiv {
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
 }
 
-@media screen and (max-width: 900px) {
-    #textElement {
-        margin-left: 10%;
-        margin-right: 10%;
-    }
+#logoLogin img {
+    margin-top: 100px;
+    max-width: 200px;
+    width: 100%;
 }
 
-/*Slut på regler för sidan "Om*/
+.submit,
+.reset {
+    @extend .button;
+}
+
+/*Slut på regler för sidan "LOGGA IN"*/

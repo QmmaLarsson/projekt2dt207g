@@ -27,18 +27,21 @@
 .button {
     font-size: 2rem;
     font-family: base.$font-stack;
-    border: none;
-    background-color: base.$darkpink;
+    background-color: base.$primary-bg;
     color: base.$black;
-    padding: 25px;
+    padding: 10px;
     border-radius: 5px;
+    margin-bottom: 5px;
     cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-color: base.$darkbeige;
 }
 
 .button:hover {
-    background-color: base.$primary-bg;
+    background-color: base.$darkbeige
 }
 
 .button.active {
-    background-color: base.$primary-bg;
+    background-color: base.$darkbeige;
 }

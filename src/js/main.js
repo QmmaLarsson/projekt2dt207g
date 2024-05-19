@@ -54,8 +54,8 @@ linksMobile.forEach(link => {
             //När en länk klickas på döljs menyn
             document.getElementById("huvudmeny").style.display = "none";
         }
-    })
-})
+    });
+});
 
 //Länkar i huvudmeny
 //Variabler
@@ -88,22 +88,3 @@ function handleLogout() {
     //Omdirigera till inloggningssidan
     window.location.href = "login.html";
 }
-
-//Bakgrund på header vid scroll
-
-//Header
-//Variabler
-const headerEl = document.getElementById("header");
-
-//Händelsehanterare
-document.addEventListener("scroll", function () {
-    const scrollPosition = window.scrollY;
-
-    if (scrollPosition > 0) {
-        //Om man scrollar ner så att headern inte ligger på toppen av sidan så får headern en bakgrundsfärg
-        headerEl.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
-    } else {
-        //Om headern ligger på toppen av sidan så har en den ingen bakgrundsfärg
-        headerEl.style.backgroundColor = "transparent";
-    }
-});

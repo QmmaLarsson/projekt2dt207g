@@ -28,8 +28,8 @@ function displayMenu(items) {
         <p><span class="name"><strong>${item.name}</strong> </span></p>
         <p><span class="description"><em>${item.description}</em></span></p>
         <p><span class="price"><strong>${item.price}</strong></span><strong>kr</strong></p>
-        <button class="deleteBtn" type="button">Ta bort</button>
-        <button class="editBtn" type="button">Redigera</button>
+        <button class="deleteBtn" type="button">TA BORT</button>
+        <button class="editBtn" type="button">REDIGERA</button>
 `;
 
         // Lägg till varje items ID som ett data-attribut
@@ -89,7 +89,7 @@ function displayMenu(items) {
                 //Spara-knapp
                 //Variabler
                 const saveBtn = document.createElement("button");
-                saveBtn.textContent = "Spara";
+                saveBtn.textContent = "SPARA";
                 saveBtn.classList.add("saveBtn");
                 saveBtn.type = "button";
 

@@ -12,42 +12,13 @@
 </head>
 
 <body>
-    <header id="header">
+    <main>
+        <div id="logoDiv">
+            <a id="logoLogin" href="index.html"><img id="imgLogin" src="images/logo.svg" alt="Logotyp"></a>
+        </div>
 
-        <a id="logo" href="index.html"><img src="images/logo.svg" alt="Logotyp"></a>
-
-        <!-- En knapp för att öppna meny på mindre skärmar -->
-        <button id="openmenu" class="button" type="button">
-            <span><i class="fa-solid fa-bars"></i></span>
-            <span id="menutext">
-                <br>MENY
-            </span>
-        </button>
-
-        <nav id="huvudmeny">
-
-            <!-- En knapp för att stänga menyn på mindre skärmar -->
-            <button id="closemenu" class="button" type="button">
-                <span>X</span>
-                <span>STÄNG</span>
-            </button>
-
-            <ul>
-                <li><a href="index.html">STARTSIDA</a></li>
-                <li><a href="../src/index.html#menu-heading">MENY</a></li>
-                <li><a href="../src/index.html#about-heading">OM OSS</a></li>
-                <li><a href="../src/index.html#contact-heading">KONTAKT</a></li>
-                <li id="adminLink"><a href="admin.html">ADMIN</a></li>
-            </ul>
-
-        </nav>
-
-    </header>
-
-    <main id="down">
         <h1>LOGGA IN</h1>
 
-        <h2>Logga in</h2>
         <form id="loginForm">
             <label for="username"><strong>Användarnamn:</strong></label>
             <br>
@@ -61,11 +32,6 @@
             <button class="reset" type="reset">Rensa formulär</button>
         </form>
     </main>
-
-    <footer>
-        <p id="login"><a href="login.html">Logga in</a></p>
-        <button class="submit" id="logout" type="button">Logga ut</button>
-    </footer>
 </body>
 
 </html>
